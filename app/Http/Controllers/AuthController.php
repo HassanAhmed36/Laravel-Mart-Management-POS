@@ -24,13 +24,12 @@ class AuthController extends Controller
             'User_Id' => 'required',
             'password' => 'required'
         ]);
-
         $user = User::with('branch')->where('User_Id', $request->User_Id)->first();
 
         if (!$user) {
             return back()->with('error', 'User not found');
         }
-        if ($user->is_active == false) {
+        if (!$user->is_active) {
             return back()->with('error', 'Your account has been deactivated');
         }
 

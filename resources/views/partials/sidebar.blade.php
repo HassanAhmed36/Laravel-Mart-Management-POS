@@ -41,7 +41,7 @@
                         <span data-key="t-branches">Branches</span>
                     </a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item mb-2">
                     <a class="nav-link menu-link collapsed" href="#sidebarDashboards" data-bs-toggle="collapse"
                         role="button" aria-expanded="false" aria-controls="sidebarDashboards">
                         <i class="ph-shopping-bag"></i> <span data-key="t-dashboards">Products</span>
@@ -49,7 +49,7 @@
                     <div class="collapse menu-dropdown" id="sidebarDashboards">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
-                                <a href="dashboard-analytics.html" class="nav-link" data-key="t-analytics">All
+                                <a href="{{route('product.index')}}" class="nav-link" data-key="t-analytics">All
                                     Products</a>
                             </li>
                             <li class="nav-item">
@@ -64,6 +64,12 @@
                             </li>
                         </ul>
                     </div>
+                </li>
+                <li class="nav-item mb-2">
+                    <a href="{{ route('pos.index') }}" class="nav-link menu-link">
+                        <i class="ph-money-thin"></i>
+                        <span data-key="t-branches">POS</span>
+                    </a>
                 </li>
 
             </ul>

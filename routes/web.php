@@ -4,10 +4,12 @@ use App\Http\Controllers\BranchController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UnitController;
 use App\Http\Controllers\UserController;
+use App\Models\Product;
 use Illuminate\Support\Facades\Route;
 use Symfony\Component\HttpKernel\Profiler\Profile;
 
@@ -83,6 +85,19 @@ Route::middleware('check.auth')->group(function () {
             Route::post('/update/{id}', 'update')->name('unit.update');
             Route::get('/delete/{id}', 'destroy')->name('unit.delete');
         });
+
+    Route::controller(ProductController::class)
+        ->prefix('Product')
+        ->group(function () {
+            Route::get('/', 'index')->name('product.index');
+            Route::post('/store', 'store')->name('product.store');
+            Route::get('/edit', 'edit')->name('product.edit');
+            Route::post('/update/{id}', 'update')->name('product.update');
+            Route::get('/delete/{id}', 'destroy')->name('product.delete');
+        });
+
+    Route::view('/POS/', 'pos.index')->name('pos.index');
+    Route::get('/search-product', [ProductController::class, 'searchProduct'])->name('search.product');
 
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 });
